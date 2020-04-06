@@ -49,13 +49,24 @@ public class FXMLFightersSceneController implements Initializable {
     private Label nameLabel;
 
     @FXML
-    private Label creditsLabel;
+    private Label attackLabel;
 
     @FXML
-    private Label bdLabel;
+    private Label defendLabel;
+    
+    @FXML
+    private Label levelLabel;
+    
+    @FXML
+    private Label level1Label;
 
     @FXML
     private TextField newNameTextField;
+        @FXML
+    private TextField yourFighter;
+
+    @FXML
+    private TextField yourOpponent;
 
     @FXML
     void handleLoadButtonPushed() {
@@ -63,14 +74,24 @@ public class FXMLFightersSceneController implements Initializable {
         nameLabel.textProperty().bind(model.getFighter().nameProperty());
         name1Label.textProperty().bind(model.getFighter2().nameProperty());
 
-        creditsLabel.setText("" + model.getFighter().getAttack());
+        attackLabel.setText("" + model.getFighter().getAttack());
         attack1Label.setText("" + model.getFighter2().getAttack());       
         
-        bdLabel.setText(""+model.getFighter().getDefend());
+        defendLabel.setText(""+model.getFighter().getDefend());
         defend1Label.setText(""+model.getFighter2().getDefend());
+        
+        levelLabel.setText(""+model.getFighter().getLevel());
+        level1Label.setText(""+model.getFighter2().getLevel());
+    }
+    
+    
+    
+    @FXML
+    void handleFightButtonPushed() {
+        
     }
 
-    @FXML
+  /*  @FXML
     void handleChangeButtonPushed() {
         model.getFighter().setName(newNameTextField.getText());
         Alert alert = new Alert(AlertType.INFORMATION);
@@ -79,7 +100,7 @@ public class FXMLFightersSceneController implements Initializable {
         alert.setContentText("This shows that you have pushed a button...");
         alert.showAndWait();
     }
-
+*/
     @FXML
     void handleSaveToFileButtonPushed() throws IOException {
         try (FileOutputStream fos = new FileOutputStream("fighters.ser");
@@ -96,6 +117,7 @@ public class FXMLFightersSceneController implements Initializable {
             model.getFighter().setName(s.getName());
             model.getFighter().setDefend(s.getDefend());
             model.getFighter().setAttack(s.getAttack());
+            model.getFighter().setLevel(s.getLevel());
         }
     }
 

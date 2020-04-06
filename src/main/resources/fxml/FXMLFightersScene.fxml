@@ -2,25 +2,25 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.view.FXMLFightersSceneController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #595959;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.view.FXMLFightersSceneController">
    <children>
-      <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TabPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #595959;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
-          <Tab text="LoadDemo">
+          <Tab style="-fx-color: #595959;" text="Load Fighters">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <GridPane layoutX="150.0" layoutY="141.0" prefHeight="371.0" prefWidth="600.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
+                        <GridPane layoutX="14.0" layoutY="25.0" prefHeight="371.0" prefWidth="600.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="25.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -32,14 +32,15 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Button mnemonicParsing="false" onAction="#handleLoadButtonPushed" text="Load" GridPane.halignment="CENTER">
+                              <Button mnemonicParsing="false" onAction="#handleLoadButtonPushed" prefHeight="44.0" prefWidth="122.0" style="-fx-background-color: #eda678; -fx-border-radius: 5em; -fx-background-radius: 5em;" text="Load" GridPane.halignment="CENTER">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Button>
-                              <Label text="Name:" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                              <Label text="Name:" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -47,7 +48,7 @@
                                     <Insets right="25.0" />
                                  </GridPane.margin>
                               </Label>
-                              <Label text="Attack:" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                              <Label text="Attack:" textFill="#fafafa" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -55,7 +56,7 @@
                                     <Insets right="25.0" />
                                  </GridPane.margin>
                               </Label>
-                              <Label text="Defend:" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                              <Label text="Defend:" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -63,47 +64,60 @@
                                     <Insets right="25.0" />
                                  </GridPane.margin>
                               </Label>
-                              <Label fx:id="nameLabel" text="n.a." GridPane.columnIndex="2">
+                              <Label fx:id="nameLabel" textFill="#e40b0b" GridPane.columnIndex="2">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="creditsLabel" text="n.a." GridPane.columnIndex="2" GridPane.rowIndex="1">
+                              <Label fx:id="attackLabel" textFill="#e40b0b" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="bdLabel" text="n.a." GridPane.columnIndex="2" GridPane.rowIndex="2">
+                              <Label fx:id="defendLabel" textFill="#e40b0b" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <Button mnemonicParsing="false" onAction="#handleChangeButtonPushed" text="Change" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                              <Button mnemonicParsing="false" onAction="#handleSaveToFileButtonPushed" style="-fx-background-color: #eda678; -fx-border-radius: 5em; -fx-background-radius: 5em;" text="Save to File" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#handleSaveToFileButtonPushed" text="Save to File" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                              <Button mnemonicParsing="false" onAction="#handleLoadFromFileButtonPushed" style="-fx-background-color: #eda678; -fx-border-radius: 5em; -fx-background-radius: 5em;" text="Load from File" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#handleLoadFromFileButtonPushed" text="Load from File" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="name1Label" prefHeight="38.0" prefWidth="56.0" text="Label" GridPane.columnIndex="3">
+                              <Label fx:id="name1Label" prefHeight="38.0" prefWidth="56.0" textFill="#e40b0b" GridPane.columnIndex="3">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="attack1Label" prefHeight="51.0" prefWidth="66.0" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                              <Label fx:id="attack1Label" prefHeight="51.0" prefWidth="66.0" textFill="#e40b0b" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="defend1Label" prefHeight="45.0" prefWidth="62.0" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                              <Label fx:id="defend1Label" prefHeight="45.0" prefWidth="62.0" textFill="#e40b0b" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Level:" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                                 <GridPane.margin>
+                                    <Insets right="25.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="levelLabel" textFill="#e40b0b" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="level1Label" textFill="#e40b0b" GridPane.columnIndex="3" GridPane.rowIndex="3">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -113,13 +127,11 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab text="Choose fighter">
+            <Tab style="-fx-color: #595959;" text="Choose fighter">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: black;">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #595959;">
                      <children>
-                        <ComboBox layoutX="54.0" layoutY="155.0" prefWidth="150.0" />
-                        <ComboBox layoutX="370.0" layoutY="155.0" prefWidth="150.0" />
-                        <Label layoutX="64.0" layoutY="39.0" prefHeight="76.0" prefWidth="162.0" text="Your fighter:" textFill="RED">
+                        <Label layoutX="64.0" layoutY="39.0" prefHeight="76.0" prefWidth="162.0" text="Your fighter:" textFill="#0067ff">
                            <font>
                               <Font size="29.0" />
                            </font>
@@ -129,6 +141,9 @@
                               <Font size="29.0" />
                            </font>
                         </Label>
+                        <TextField fx:id="yourFighter" layoutX="71.0" layoutY="161.0" />
+                        <TextField fx:id="yourOpponent" layoutX="389.0" layoutY="161.0" />
+                        <Button layoutX="274.0" layoutY="161.0" mnemonicParsing="false" onAction="#handleFightButtonPushed" text="FIGHT" textFill="#dd0101" />
                      </children>
                   </AnchorPane>
               </content>

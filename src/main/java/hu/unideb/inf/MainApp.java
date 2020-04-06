@@ -7,6 +7,7 @@ import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class MainApp extends Application {
 
@@ -14,6 +15,8 @@ public class MainApp extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/fxml/FXMLFightersScene.fxml"));
         Scene scene = new Scene(loader.load());
+       // stage.initStyle(StageStyle.TRANSPARENT);
+       // scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
         stage.setTitle("Fighter");
         stage.setScene(scene);
         

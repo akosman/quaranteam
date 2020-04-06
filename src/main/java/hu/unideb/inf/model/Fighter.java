@@ -19,12 +19,14 @@ public class Fighter implements Serializable {
     private StringProperty name = new SimpleStringProperty();
     private int attack;
     private int defend;
+    private int level;
     
 
-    public Fighter(String name,int attack,int defend) {
+    public Fighter(String name,int attack,int defend, int level) {
         this.name.setValue(name);
         this.attack=attack;
         this.defend=defend;
+        this.level=level;
     
     }
 
@@ -35,6 +37,10 @@ public class Fighter implements Serializable {
     public int getDefend() {
         return defend;
     }
+    
+    public int getLevel() {
+        return level;
+    }
 
     public void setAttack(int attack) {
         this.attack = attack;
@@ -42,6 +48,10 @@ public class Fighter implements Serializable {
 
     public void setDefend(int defend) {
         this.defend = defend;
+    }
+    
+    public void setLevel(int level) {
+        this.level = level;
     }
     
 
@@ -66,11 +76,13 @@ public class Fighter implements Serializable {
         s.writeUTF(name.getValue());
         s.writeInt(attack);
         s.writeInt(defend);
+        s.writeInt(level);
     }
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         this.name = new SimpleStringProperty(s.readUTF());
         this.attack = s.readInt();
         this.defend = s.readInt();
+        this.level = s.readInt();
     }
 }
