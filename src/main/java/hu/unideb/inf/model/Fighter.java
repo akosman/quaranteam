@@ -1,3 +1,5 @@
+//Proba komment GM
+
 package hu.unideb.inf.model;
 
 import java.io.IOException;
