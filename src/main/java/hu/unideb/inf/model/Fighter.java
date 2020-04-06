@@ -1,4 +1,5 @@
 //Proba komment GM
+//Proba komment Dani
 
 package hu.unideb.inf.model;
 
