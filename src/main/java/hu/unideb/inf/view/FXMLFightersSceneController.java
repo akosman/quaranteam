@@ -14,10 +14,13 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -59,18 +62,22 @@ public class FXMLFightersSceneController implements Initializable {
     
     @FXML
     private Label level1Label;
+    
+      @FXML
+    private ChoiceBox<String> yourFighterA;
+      
+     
 
     @FXML
-    private TextField newNameTextField;
-        @FXML
-    private TextField yourFighter;
+    private ChoiceBox<String> yourFighterB;
+    
+    ObservableList list = FXCollections.observableArrayList();
 
-    @FXML
-    private TextField yourOpponent;
+   
 
     @FXML
     void handleLoadButtonPushed() {
-        //nameLabel.setText(model.getStudent().getName());
+        
         nameLabel.textProperty().bind(model.getFighter().nameProperty());
         name1Label.textProperty().bind(model.getFighter2().nameProperty());
 
@@ -120,12 +127,24 @@ public class FXMLFightersSceneController implements Initializable {
             model.getFighter().setLevel(s.getLevel());
         }
     }
+    
+        private void LoadData() {
+        list.removeAll(list);
+        String a = "DOM";
+        String b = "AKOS";
+        list.addAll(a, b);
+        yourFighterA.getItems().addAll(list);
+        yourFighterB.getItems().addAll(list);
+    }
+        
+       
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+     LoadData();
     }
 
 }
