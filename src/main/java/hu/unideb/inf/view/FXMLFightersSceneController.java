@@ -17,12 +17,12 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+
 
 /**
  * FXML Controller class
@@ -63,6 +63,9 @@ public class FXMLFightersSceneController implements Initializable {
     @FXML
     private Label level1Label;
     
+    @FXML
+    private AnchorPane rootPane;
+    
       @FXML
     private ChoiceBox<String> yourFighterA;
       
@@ -72,6 +75,7 @@ public class FXMLFightersSceneController implements Initializable {
     private ChoiceBox<String> yourFighterB;
     
     ObservableList list = FXCollections.observableArrayList();
+    ObservableList list2 = FXCollections.observableArrayList();
 
    
 
@@ -90,24 +94,7 @@ public class FXMLFightersSceneController implements Initializable {
         levelLabel.setText(""+model.getFighter().getLevel());
         level1Label.setText(""+model.getFighter2().getLevel());
     }
-    
-    
-    
-    @FXML
-    void handleFightButtonPushed() {
-        
-    }
-
-  /*  @FXML
-    void handleChangeButtonPushed() {
-        model.getFighter().setName(newNameTextField.getText());
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Button pushed");
-        alert.setHeaderText("You have pushed the Change Name button");
-        alert.setContentText("This shows that you have pushed a button...");
-        alert.showAndWait();
-    }
-*/
+   
     @FXML
     void handleSaveToFileButtonPushed() throws IOException {
         try (FileOutputStream fos = new FileOutputStream("fighters.ser");
@@ -128,13 +115,26 @@ public class FXMLFightersSceneController implements Initializable {
         }
     }
     
+    @FXML
+    void handleFightButtonPushed() throws IOException {
+        
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/FXMLFightingScene.fxml"));
+        
+        rootPane.getChildren().setAll(pane);
+                      
+        
+        
+    }
+    
         private void LoadData() {
         list.removeAll(list);
+        list2.removeAll(list2);
         String a = "DOM";
         String b = "AKOS";
         list.addAll(a, b);
+        list2.addAll(b, a);
         yourFighterA.getItems().addAll(list);
-        yourFighterB.getItems().addAll(list);
+        yourFighterB.getItems().addAll(list2);
     }
         
        

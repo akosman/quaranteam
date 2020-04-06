@@ -129,7 +129,7 @@
           </Tab>
             <Tab style="-fx-color: #595959;" text="Choose fighter">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #595959;">
+                <AnchorPane fx:id="rootPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #595959;">
                      <children>
                         <Label layoutX="64.0" layoutY="39.0" prefHeight="76.0" prefWidth="162.0" text="Your fighter:" textFill="#0067ff">
                            <font>
