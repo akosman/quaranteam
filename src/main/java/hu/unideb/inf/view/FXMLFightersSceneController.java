@@ -7,6 +7,7 @@ package hu.unideb.inf.view;
 
 import hu.unideb.inf.model.Model;
 import hu.unideb.inf.model.Fighter;
+import java.awt.event.MouseEvent;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -19,8 +20,10 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.AnchorPane;
 
 
@@ -36,17 +39,12 @@ public class FXMLFightersSceneController implements Initializable {
     public void setModel(Model model) {
         this.model = model;
     }
-     @FXML
-    private Label name1Label;
-
-    @FXML
-    private Label attack1Label;
-
-    @FXML
-    private Label defend1Label;
 
     @FXML
     private Label colorLabel;
+    
+    @FXML
+    private Button loadbutton;
 
     @FXML
     private Label nameLabel;
@@ -59,40 +57,49 @@ public class FXMLFightersSceneController implements Initializable {
     
     @FXML
     private Label levelLabel;
-    
-    @FXML
-    private Label level1Label;
-    
+
     @FXML
     private AnchorPane rootPane;
     
-      @FXML
+    @FXML
     private ChoiceBox<String> yourFighterA;
-      
      
-
     @FXML
     private ChoiceBox<String> yourFighterB;
     
+    @FXML
+    private ChoiceBox<String> Fighter;
+    
+    // listak a ChoiceBoxokhoz
+    
     ObservableList list = FXCollections.observableArrayList();
     ObservableList list2 = FXCollections.observableArrayList();
-
-   
-
+    
+  
+   // Itt a LOAD gomb megnezi hogy kit szeretnel betolteni es azt rakja a Labelekre
+    
     @FXML
     void handleLoadButtonPushed() {
-        
+        if (Fighter.getValue().equals("DOM")){
         nameLabel.textProperty().bind(model.getFighter().nameProperty());
-        name1Label.textProperty().bind(model.getFighter2().nameProperty());
 
         attackLabel.setText("" + model.getFighter().getAttack());
-        attack1Label.setText("" + model.getFighter2().getAttack());       
-        
+
         defendLabel.setText(""+model.getFighter().getDefend());
-        defend1Label.setText(""+model.getFighter2().getDefend());
-        
+
         levelLabel.setText(""+model.getFighter().getLevel());
-        level1Label.setText(""+model.getFighter2().getLevel());
+        }
+        else {
+        
+        nameLabel.textProperty().bind(model.getFighter2().nameProperty());
+
+        attackLabel.setText("" + model.getFighter2().getAttack());
+
+        defendLabel.setText(""+model.getFighter2().getDefend());
+
+        levelLabel.setText(""+model.getFighter2().getLevel());
+        
+        }
     }
    
     @FXML
@@ -115,6 +122,9 @@ public class FXMLFightersSceneController implements Initializable {
         }
     }
     
+    // Itt toltom be a FightingScene.fxml-t a Choose Fighter AnchorPane-rol
+    // UI: nem mukodik meg rendesen a visszagomb sajnos,szoval meg buggos,es a Modell cuccokat sem tolti be
+    
     @FXML
     void handleFightButtonPushed() throws IOException {
         
@@ -125,6 +135,7 @@ public class FXMLFightersSceneController implements Initializable {
         
         
     }
+        // Betolto fuggveny a ChoiceBoxokhoz
     
         private void LoadData() {
         list.removeAll(list);
@@ -135,6 +146,8 @@ public class FXMLFightersSceneController implements Initializable {
         list2.addAll(b, a);
         yourFighterA.getItems().addAll(list);
         yourFighterB.getItems().addAll(list2);
+        Fighter.getItems().addAll(list);
+        Fighter.setValue("DOM");
     }
         
        
@@ -144,7 +157,7 @@ public class FXMLFightersSceneController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-     LoadData();
+         LoadData();
     }
 
 }

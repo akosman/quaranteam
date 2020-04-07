@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="hu.unideb.inf.view.FXMLFightingSceneController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.view.FXMLFightingSceneController">
    <children>
-      <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #636160;">
+      <AnchorPane fx:id="FightPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #636160;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="286.0" layoutY="192.0" text="FIGHTING" />
+            <Label layoutX="274.0" layoutY="191.0" text="FIGHTING" />
+            <Button layoutX="261.0" layoutY="313.0" mnemonicParsing="false" onAction="#handleBackButtonPushed" text="Main Menu" />
          </children>
       </AnchorPane>
    </children>

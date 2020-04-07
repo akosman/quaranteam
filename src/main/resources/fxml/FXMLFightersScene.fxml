@@ -18,9 +18,9 @@
         <tabs>
           <Tab style="-fx-color: #595959;" text="Load Fighters">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane>
                      <children>
-                        <GridPane layoutX="14.0" layoutY="25.0" prefHeight="371.0" prefWidth="600.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="25.0">
+                        <GridPane layoutX="14.0" layoutY="36.0" prefHeight="371.0" prefWidth="600.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="36.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -89,21 +89,6 @@
                                     <Font size="20.0" />
                                  </font>
                               </Button>
-                              <Label fx:id="name1Label" prefHeight="38.0" prefWidth="56.0" textFill="#e40b0b" GridPane.columnIndex="3">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="attack1Label" prefHeight="51.0" prefWidth="66.0" textFill="#e40b0b" GridPane.columnIndex="3" GridPane.rowIndex="1">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="defend1Label" prefHeight="45.0" prefWidth="62.0" textFill="#e40b0b" GridPane.columnIndex="3" GridPane.rowIndex="2">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
                               <Label text="Level:" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                                  <font>
                                     <Font size="20.0" />
@@ -117,11 +102,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="level1Label" textFill="#e40b0b" GridPane.columnIndex="3" GridPane.rowIndex="3">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
+                              <ChoiceBox fx:id="Fighter" prefWidth="150.0" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
                      </children></AnchorPane>
@@ -129,7 +110,7 @@
           </Tab>
             <Tab style="-fx-color: #595959;" text="Choose fighter">
               <content>
-                <AnchorPane fx:id="rootPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #595959;">
+                <AnchorPane fx:id="rootPane" style="-fx-background-color: #595959;">
                      <children>
                         <Label layoutX="64.0" layoutY="39.0" prefHeight="76.0" prefWidth="162.0" text="Your fighter:" textFill="#0067ff">
                            <font>
