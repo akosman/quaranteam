@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -43,6 +44,31 @@ public class FXMLFightingSceneController implements Initializable {
     @FXML
      private Label opponentname;
     
+    @FXML
+     private Label youlvl;
+    
+    @FXML
+     private Label opponentlvl;
+    
+    @FXML
+     private Label youattack;
+    
+    @FXML
+     private Label opponentattack;
+    
+    @FXML
+     private Label youdefend;
+    
+    @FXML
+     private Label opponentdefend;
+    
+    @FXML
+    private Label winner;
+    
+    @FXML
+    private ProgressBar progressbar;
+    
+    
     // Informacioatadas az initData fuggvennyel, a ket harcos infoit kapjuk meg
     
     public void initData(Fighter You, Fighter Opponent) {
@@ -53,7 +79,39 @@ public class FXMLFightingSceneController implements Initializable {
         yourfightername.textProperty().bind(You.nameProperty());
         opponentname.textProperty().bind(Opponent.nameProperty());
         
+        youlvl.setText("Lvl:" + You.getLevel());
+        opponentlvl.setText("Lvl:" + Opponent.getLevel());
+
+        youattack.setText("" + You.getAttack());
+        opponentattack.setText("" + Opponent.getAttack());
+        
+        youdefend.setText("" + You.getDefend());
+        opponentdefend.setText("" + Opponent.getDefend());
+        
+        
+        
+        winner.textProperty().bind(Fight(You, Opponent).nameProperty());
+       
     }
+    
+    
+    
+     public Fighter Fight(Fighter Fighter1, Fighter Fighter2) {
+        
+        Fighter you = Fighter1;
+        Fighter opponent = Fighter2;
+        
+        if (you.getAttack() > opponent.getDefend()) {
+            return you;
+        } else if(you.getAttack() < opponent.getDefend()) {
+            return opponent;
+        } else {
+            return opponent;
+        }
+        
+        
+    }
+   
    
 
     /**
@@ -61,7 +119,7 @@ public class FXMLFightingSceneController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
     
 }

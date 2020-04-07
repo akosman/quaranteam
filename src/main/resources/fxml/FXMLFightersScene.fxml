@@ -125,6 +125,11 @@
                         <Button layoutX="274.0" layoutY="161.0" mnemonicParsing="false" onAction="#handleFightButtonPushed" text="FIGHT" textFill="#dd0101" />
                         <ChoiceBox fx:id="yourFighterA" layoutX="75.0" layoutY="161.0" prefWidth="150.0" />
                         <ChoiceBox fx:id="yourFighterB" layoutX="388.0" layoutY="161.0" prefWidth="150.0" />
+                        <Label fx:id="choiceerror" layoutX="161.0" layoutY="229.0" text="You cant fight against yourself!" visible="false">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
               </content>
