@@ -7,7 +7,6 @@ package hu.unideb.inf.view;
 
 import hu.unideb.inf.model.Model;
 import hu.unideb.inf.model.Fighter;
-import java.awt.event.MouseEvent;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -20,11 +19,14 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 
 /**
@@ -80,6 +82,7 @@ public class FXMLFightersSceneController implements Initializable {
     
     @FXML
     void handleLoadButtonPushed() {
+        
         if (Fighter.getValue().equals("DOM")){
         nameLabel.textProperty().bind(model.getFighter().nameProperty());
 
@@ -128,11 +131,28 @@ public class FXMLFightersSceneController implements Initializable {
     @FXML
     void handleFightButtonPushed() throws IOException {
         
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/FXMLFightingScene.fxml"));
-        
-        rootPane.getChildren().setAll(pane);
-                      
-        
+  
+       FXMLLoader loader = new FXMLLoader(FXMLFightersSceneController.class.getResource("/fxml/FXMLFightingScene.fxml"));
+       Scene scene = new Scene(loader.load());
+       Stage stage = new Stage(StageStyle.DECORATED);
+       stage.setTitle("Fight");
+       stage.getIcons().add(new Image("/fxml/battle.png"));
+       stage.setScene(scene);
+       
+       FXMLFightingSceneController controller = loader.getController();
+       
+       // itt dol el a choiceboxbol hogy ki lesz a te harcosod es ki az ellenfel
+       // es annak az adatait dobjuk at a Fighting scenere
+       
+       if (yourFighterA.getValue().equals("DOM") && yourFighterB.getValue().equals("AKOS")){
+           
+           controller.initData(model.getFighter(), model.getFighter2());
+           
+       } else {
+           controller.initData(model.getFighter2(), model.getFighter());
+       }
+            
+       stage.show();                          
         
     }
         // Betolto fuggveny a ChoiceBoxokhoz
@@ -148,6 +168,8 @@ public class FXMLFightersSceneController implements Initializable {
         yourFighterB.getItems().addAll(list2);
         Fighter.getItems().addAll(list);
         Fighter.setValue("DOM");
+        yourFighterA.setValue("DOM");
+        yourFighterB.setValue("AKOS");
     }
         
        

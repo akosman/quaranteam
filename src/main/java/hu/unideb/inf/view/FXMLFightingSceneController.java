@@ -6,6 +6,7 @@
 package hu.unideb.inf.view;
 
 import hu.unideb.inf.MainApp;
+import hu.unideb.inf.model.Fighter;
 import hu.unideb.inf.model.Model;
 import java.io.IOException;
 import java.net.URL;
@@ -13,6 +14,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -22,17 +24,37 @@ import javafx.scene.layout.AnchorPane;
  */
 public class FXMLFightingSceneController implements Initializable {
     
-     @FXML
-     private AnchorPane FightPane;
-     
-     // itt toltom vissza a FightersScene.fxml-t, de meg nem vittem at a modellt is
-    
-     @FXML
-    void handleBackButtonPushed() throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/FXMLFightersScene.fxml"));
-      
-        FightPane.getChildren().setAll(pane);
+    private Model model;
+
+    public void setModelFighting(Model model) {
+        this.model = model;
     }
+    
+    private Fighter youselect;
+    
+    private Fighter opponentselect;
+    
+    @FXML
+     private AnchorPane FightPane;
+    
+    @FXML
+     private Label yourfightername;
+     
+    @FXML
+     private Label opponentname;
+    
+    // Informacioatadas az initData fuggvennyel, a ket harcos infoit kapjuk meg
+    
+    public void initData(Fighter You, Fighter Opponent) {
+    
+        youselect = You;
+        opponentselect = Opponent;
+        
+        yourfightername.textProperty().bind(You.nameProperty());
+        opponentname.textProperty().bind(Opponent.nameProperty());
+        
+    }
+   
 
     /**
      * Initializes the controller class.

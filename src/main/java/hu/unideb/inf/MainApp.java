@@ -6,6 +6,7 @@ import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
@@ -16,7 +17,8 @@ public class MainApp extends Application {
         Scene scene = new Scene(loader.load());
        // stage.initStyle(StageStyle.TRANSPARENT);
        // scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
-        stage.setTitle("Fighter");
+        stage.setTitle("Fighting Game");
+        stage.getIcons().add(new Image("/fxml/sword.png"));
         stage.setScene(scene);
         
         ((FXMLFightersSceneController)loader.getController()).setModel(new Model());
