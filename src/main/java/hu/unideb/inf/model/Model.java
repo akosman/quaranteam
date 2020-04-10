@@ -24,7 +24,7 @@ public class Model {
     }
 
     public Model() {
-        fighter = new Fighter("DOM", 10, 30, 3);
+        fighter = new Fighter("DOM", 11, 25, 1);
         fighter2 = new Fighter("ÁKOS",30,10, 1);
     }
     

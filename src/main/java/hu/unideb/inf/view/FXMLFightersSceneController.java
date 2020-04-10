@@ -93,7 +93,7 @@ public class FXMLFightersSceneController implements Initializable {
 
         defendLabel.setText(""+model.getFighter().getDefend());
 
-        levelLabel.setText(""+model.getFighter().getLevel());
+        levelLabel.setText(""+model.getFighter().getLevel2());
         }
         else {
         
@@ -103,7 +103,7 @@ public class FXMLFightersSceneController implements Initializable {
 
         defendLabel.setText(""+model.getFighter2().getDefend());
 
-        levelLabel.setText(""+model.getFighter2().getLevel());
+        levelLabel.setText(""+model.getFighter2().getLevel2());
         
         }
     }

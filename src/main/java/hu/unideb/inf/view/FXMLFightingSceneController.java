@@ -34,7 +34,7 @@ import javafx.stage.Stage;
 public class FXMLFightingSceneController implements Initializable {
 
     private Model model;
-    Fighter winner;
+    String winner;
 
     public void setModelFighting(Model model) {
         this.model = model;
@@ -107,17 +107,27 @@ public class FXMLFightingSceneController implements Initializable {
 
     }
 
-    public Fighter Fight(Fighter Fighter1, Fighter Fighter2) {
-
+    public String Fight(Fighter Fighter1, Fighter Fighter2) {
+        int level=0;
         Fighter you = Fighter1;
         Fighter opponent = Fighter2;
 
         if (you.getAttack() > opponent.getDefend()) {
-            return you;
-        } else if (you.getAttack() < opponent.getDefend()) {
-            return opponent;
+            
+            level=you.getLevel2();
+            level++;
+            you.setLevel2(level);
+            
+            return you.getName();
+        } else if (you.getDefend() < opponent.getAttack()) {
+            
+            level=opponent.getLevel2();
+            level++;
+            opponent.setLevel2(level);
+            
+            return opponent.getName();
         } else {
-            return opponent;
+            return "DRAW";
         }
 
     }
@@ -138,8 +148,16 @@ public class FXMLFightingSceneController implements Initializable {
 
             @Override
             public void handle(WorkerStateEvent t) {
-                updateMessage.setText("Winner: " + winner.getName());
+                if(winner=="DRAW")
+                {
+                    updateMessage.setText(winner);
+                }
+                else
+                {
+                    updateMessage.setText("Winner: " + winner);
+                }
             }
+            
         });
         new Thread(startProgressBar).start();
 
