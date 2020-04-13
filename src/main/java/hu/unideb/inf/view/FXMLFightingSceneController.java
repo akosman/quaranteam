@@ -92,8 +92,8 @@ public class FXMLFightingSceneController implements Initializable {
         yourfightername.textProperty().bind(You.nameProperty());
         opponentname.textProperty().bind(Opponent.nameProperty());
 
-        youlvl.setText("Lvl:" + You.getLevel());
-        opponentlvl.setText("Lvl:" + Opponent.getLevel());
+        youlvl.setText("Lvl:" + You.getLevel2());
+        opponentlvl.setText("Lvl:" + Opponent.getLevel2());
 
         youattack.setText("" + You.getAttack());
         opponentattack.setText("" + Opponent.getAttack());
