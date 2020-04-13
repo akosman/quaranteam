@@ -5,8 +5,8 @@
  */
 package hu.unideb.inf.view;
 
-import hu.unideb.inf.model.Model;
 import hu.unideb.inf.model.Fighter;
+import hu.unideb.inf.model.Model;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -28,20 +28,23 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-
 /**
  * FXML Controller class
  *
- * @author Dani
+ * @author gM
  */
-public class FXMLFightersSceneController implements Initializable {
-
+public class FXMLhomeSceneController implements Initializable {
     private Model model;
 
     public void setModel(Model model) {
         this.model = model;
     }
 
+    @FXML
+    private AnchorPane managePane;
+    @FXML
+    private AnchorPane playPane;
+    
     @FXML
     private Label colorLabel;
     
@@ -61,9 +64,6 @@ public class FXMLFightersSceneController implements Initializable {
     private Label levelLabel;
 
     @FXML
-    private AnchorPane rootPane;
-    
-    @FXML
     private ChoiceBox<String> yourFighterA;
      
     @FXML
@@ -80,9 +80,35 @@ public class FXMLFightersSceneController implements Initializable {
     ObservableList list = FXCollections.observableArrayList();
     ObservableList list2 = FXCollections.observableArrayList();
     
-  
-   // Itt a LOAD gomb megnezi hogy kit szeretnel betolteni es azt rakja a Labelekre
+    //MENÜKEZELÉS ==== MENÜKEZELÉS ==== MENÜKEZELÉS ==== MENÜKEZELÉS ==== MENÜKEZELÉS
+    @FXML
+    void handlePlayButtonPushed() {
+        //adott pane engedélyezése
+        playPane.setVisible(true);
+        playPane.setDisable(false);
+        //Többi eltűntetése
+        managePane.setVisible(false);
+        managePane.setDisable(true);
+    }
+    @FXML
+    void handleManageButtonPushed() {
+        //adott pane engedélyezése
+        managePane.setVisible(true);
+        managePane.setDisable(false);
+        //Többi eltűntetése
+        playPane.setVisible(false);
+        playPane.setDisable(true);
+    }
+     @FXML
+    void handleHomeButtonPushed() {
+        playPane.setVisible(false);
+        playPane.setDisable(true);
+        managePane.setVisible(false);
+        managePane.setDisable(true);
+    }
+    //MENÜKEZELÉS ==== MENÜKEZELÉS ==== MENÜKEZELÉS ==== MENÜKEZELÉS ==== MENÜKEZELÉS
     
+   // Itt a LOAD gomb megnezi hogy kit szeretnel betolteni es azt rakja a Labelekre
     @FXML
     void handleLoadButtonPushed() {
         
@@ -108,6 +134,7 @@ public class FXMLFightersSceneController implements Initializable {
         }
     }
    
+    
     @FXML
     void handleSaveToFileButtonPushed() throws IOException {
         try (FileOutputStream fos = new FileOutputStream("fighters.ser");
@@ -142,7 +169,7 @@ public class FXMLFightersSceneController implements Initializable {
        
        if (yourFighterA.getValue().equals("DOM") && yourFighterB.getValue().equals("AKOS")){
            
-           FXMLLoader loader = new FXMLLoader(FXMLFightersSceneController.class.getResource("/fxml/FXMLFightingScene.fxml"));
+           FXMLLoader loader = new FXMLLoader(FXMLhomeSceneController.class.getResource("/fxml/FXMLFightingScene.fxml"));
            Scene scene = new Scene(loader.load());
            Stage stage = new Stage(StageStyle.DECORATED);
            stage.setTitle("Fight");
@@ -161,7 +188,7 @@ public class FXMLFightersSceneController implements Initializable {
            
        } else if (yourFighterA.getValue().equals("AKOS") && yourFighterB.getValue().equals("DOM")) {
            
-           FXMLLoader loader = new FXMLLoader(FXMLFightersSceneController.class.getResource("/fxml/FXMLFightingScene.fxml"));
+           FXMLLoader loader = new FXMLLoader(FXMLhomeSceneController.class.getResource("/fxml/FXMLFightingScene.fxml"));
            Scene scene = new Scene(loader.load());
            Stage stage = new Stage(StageStyle.DECORATED);
            stage.setTitle("Fight");
@@ -212,5 +239,5 @@ public class FXMLFightersSceneController implements Initializable {
          LoadData();
          
     }
-
+    
 }

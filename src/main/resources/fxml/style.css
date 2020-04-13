@@ -1,0 +1,29 @@
+.menugombok{
+
+    -fx-background-radius: 0;
+    -fx-background-color: rgba(0, 0, 0, 0.5);
+    -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 12;
+    -fx-text-fill: white;
+}
+
+.menugombok:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.9);
+    -fx-text-fill: crimson;
+}
+
+.menugombok:pressed {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+}
+
+
+.maingridpane{
+
+}
+
+#mainAnchorPane{
+    -fx-background-image: url("fantasy.jpg");
+    background-repeat: no repeat;
+    -fx-background-size: cover;
+}
