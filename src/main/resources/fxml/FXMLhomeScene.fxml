@@ -13,16 +13,15 @@
 
 <AnchorPane id="mainAnchorPane" prefHeight="500.0" prefWidth="900.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.view.FXMLhomeSceneController">
    <children>
-      <GridPane layoutX="10.0" layoutY="133.0" prefHeight="80.0" prefWidth="170.0" styleClass="maingridpane" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <GridPane layoutX="10.0" layoutY="103.0" prefHeight="349.0" prefWidth="170.0" styleClass="maingridpane" stylesheets="@style.css" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="80.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints maxHeight="115.33333142598468" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="117.33332570393878" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="116.66666666666669" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="156.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="117.33332570393878" minHeight="0.0" prefHeight="80.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="116.66666666666669" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="108.66666666666669" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="89.33333333333331" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="89.33333333333331" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
@@ -31,7 +30,6 @@
             <Button mnemonicParsing="false" onAction="#handleSaveToFileButtonPushed" prefHeight="42.0" prefWidth="248.0" styleClass="menugombok" stylesheets="@style.css" text="Save" GridPane.rowIndex="3" />
             <Button mnemonicParsing="false" onAction="#handleManageButtonPushed" prefHeight="42.0" prefWidth="220.0" styleClass="menugombok" stylesheets="@style.css" text="Manage" GridPane.rowIndex="2" />
             <Button mnemonicParsing="false" onAction="#handleLoadFromFileButtonPushed" prefHeight="42.0" prefWidth="195.0" styleClass="menugombok" stylesheets="@style.css" text="Load" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false" onAction="#handleAddFighterButtonPushed" prefHeight="42.0" prefWidth="195.0" styleClass="menugombok" stylesheets="@style.css" text="Add Fighter" GridPane.rowIndex="5" />
          </children>
       </GridPane>
       <AnchorPane fx:id="playPane" disable="true" style="-fx-background-color: #595959;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -69,6 +67,12 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
+                  <TextField fx:id="FighterNameTextField" alignment="CENTER" prefHeight="32.0" prefWidth="170.0" />
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAddButtonPushed" prefHeight="44.0" prefWidth="122.0" style="-fx-background-color: #eda678; -fx-border-radius: 5em; -fx-background-radius: 5em;" text="Add" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
                   <Button mnemonicParsing="false" onAction="#handleLoadButtonPushed" prefHeight="44.0" prefWidth="122.0" style="-fx-background-color: #eda678; -fx-border-radius: 5em; -fx-background-radius: 5em;" text="Load" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                      <font>
                         <Font size="20.0" />
@@ -147,18 +151,6 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
-               <children>
-                  <TextField fx:id="FighterNameTextField" alignment="CENTER" prefHeight="32.0" prefWidth="170.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin>
-                  </TextField>
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAddButtonPushed" prefHeight="44.0" prefWidth="122.0" style="-fx-background-color: #eda678; -fx-border-radius: 5em; -fx-background-radius: 5em;" text="Add" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-               </children>
             </GridPane>
          </children>
       </AnchorPane>
