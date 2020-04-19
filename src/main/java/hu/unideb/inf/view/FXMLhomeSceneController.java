@@ -26,9 +26,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -76,6 +78,12 @@ public class FXMLhomeSceneController implements Initializable {
     
     @FXML
     private Label levelLabel;
+    
+    @FXML
+    private Slider attackSlider;
+
+    @FXML
+    private Slider defenseSlider;
 
     @FXML
     private ChoiceBox<String> yourFighterA;
@@ -120,6 +128,7 @@ public class FXMLhomeSceneController implements Initializable {
         playPane.setDisable(true);
         addFighterPane.setVisible(false);
         addFighterPane.setDisable(true);
+        
     }
     
     @FXML
@@ -330,7 +339,7 @@ public class FXMLhomeSceneController implements Initializable {
         yourFighterA.getItems().addAll(list);
         yourFighterA.setValue("DOM");
         yourFighterB.getItems().addAll(list2);
-        yourFighterA.setValue("AKOS");
+        yourFighterB.setValue("AKOS");
         ChooseFighter.getItems().addAll(list);
         ChooseFighter.setValue("DOM");
         
@@ -340,15 +349,51 @@ public class FXMLhomeSceneController implements Initializable {
         
     @FXML
     void handleAddButtonPushed() {
+        double max = 50;
+        double attack = 0;
+        double defense = 0;
+        
+        attack = attackSlider.getValue();
+        defense = defenseSlider.getValue();
+        
+        max = max - attack - defense;
         
         String v = FighterNameTextField.getText();
-        List<Fighter> temp = new ArrayList<>();
-        temp.add(new Fighter(v, 10, 10, 10));
-        temp.addAll(model.getList());
-        model.setList(temp);
-        list.add(v);
-        list2.add(v);
-        Refresh();
+        
+        for (int i=0; i<model.getList().size();i++) {
+            if (v.equals(model.getList().get(i).getName()) || v.equals("")){
+                
+            Alert wrongname = new Alert(Alert.AlertType.ERROR);
+            wrongname.setTitle("Wrong name");
+            wrongname.setContentText("Name is already in use!");
+            wrongname.setHeaderText(null);
+            wrongname.showAndWait();
+            break;
+            
+            }
+            
+            else {
+                
+                if(max == 0) {
+                
+                List<Fighter> temp = new ArrayList<>();
+                temp.add(new Fighter(v, (int)attack, (int)defense, 1));
+                temp.addAll(model.getList());
+                model.setList(temp);
+                list.add(v);
+                list2.add(v);
+                Refresh();
+                break;
+                } else {
+                    Alert wrongattributes = new Alert(Alert.AlertType.ERROR);
+                    wrongattributes.setTitle("Wront Attributes");
+                    wrongattributes.setContentText("You have to use all of your attributes points, which is 50!");
+                    wrongattributes.setHeaderText(null);
+                    wrongattributes.showAndWait();
+                   break;
+                }
+            }
+        }
 
     }
     
