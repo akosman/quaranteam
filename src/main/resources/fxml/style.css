@@ -23,7 +23,17 @@
 }
 
 #mainAnchorPane{
-    -fx-background-image: url("fantasy.jpg");
-    background-repeat: no repeat;
+    -fx-background-image: url("img/gladi.jpg");
     -fx-background-size: cover;
+}
+#fightbutton{
+    -fx-background-color: rgba(0, 0, 0, 0);
+    -fx-background-image: url(img/2swords.png);
+    -fx-background-size: cover;
+}
+#fSceneAP{
+
+}
+.fighttext{
+    -fx-text-fill: white;
 }
