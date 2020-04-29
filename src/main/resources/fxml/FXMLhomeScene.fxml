@@ -68,8 +68,8 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TextField fx:id="FighterNameTextField" alignment="CENTER" prefHeight="32.0" prefWidth="170.0" />
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAddButtonPushed" prefHeight="44.0" prefWidth="122.0" style="-fx-background-color: #eda678; -fx-border-radius: 5em; -fx-background-radius: 5em;" text="Add" GridPane.rowIndex="1">
+                  <TextField fx:id="FighterNameTextField" alignment="CENTER" prefHeight="32.0" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAddButtonPushed" prefHeight="14.0" prefWidth="187.0" style="-fx-background-color: #eda678; -fx-border-radius: 5em; -fx-background-radius: 5em;" text="Add fighter" GridPane.rowIndex="4">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -132,14 +132,19 @@
                      </font>
                   </Label>
                   <ChoiceBox fx:id="ChooseFighter" prefWidth="150.0" GridPane.columnIndex="3" />
-                  <Slider fx:id="attackSlider" majorTickUnit="10.0" max="50.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="25.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Slider fx:id="defenseSlider" majorTickUnit="10.0" max="50.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="25.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Label text="Attack:" textFill="#fafafa" GridPane.rowIndex="3">
+                  <Slider fx:id="attackSlider" majorTickUnit="10.0" max="50.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="25.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Slider fx:id="defenseSlider" majorTickUnit="10.0" max="50.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="25.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label text="Attack:" textFill="#fafafa" GridPane.rowIndex="2">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label text="Defend:" textFill="WHITE" GridPane.rowIndex="4">
+                  <Label text="Defend:" textFill="WHITE" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="29.0" prefWidth="71.0" text="Name:" textFill="#fafafa" GridPane.rowIndex="1">
                      <font>
                         <Font size="20.0" />
                      </font>
