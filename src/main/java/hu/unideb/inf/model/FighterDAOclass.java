@@ -16,20 +16,20 @@ import org.hibernate.query.Query;
  * @author mandi
  */
 public class FighterDAOclass implements FighterDAO {
-
+    
     Session session;
     Transaction transaction;
-
+    
     public FighterDAOclass() {
         session = HibernateUtil.getSessionFactory().openSession();
     }
-
+    
     @Override
     public void close() {
         session.close();
         System.out.println("DAO is closed.");
     }
-
+    
     public void saveFighter(Fighter f) {
         try {
             transaction = session.beginTransaction();
@@ -41,7 +41,7 @@ public class FighterDAOclass implements FighterDAO {
             }
         }
     }
-
+    
     public void deleteFighter(Fighter f) {
         try {
             transaction = session.beginTransaction();
@@ -53,22 +53,39 @@ public class FighterDAOclass implements FighterDAO {
             }
         }
     }
-
+    
     public void updateFighter(Fighter f) {
         try {
             transaction = session.beginTransaction();
             session.update(f);
             transaction.commit();
         } catch (Exception e) {
+            System.out.println("catched update in FighterDAO");
             if (transaction != null) {
                 transaction.rollback();
             }
         }
     }
-
+    
     public List<Fighter> getFighters() {
         String hql = "FROM hu.unideb.inf.model.Fighter";
         Query query = session.createQuery(hql);
         return query.list();
+    }
+    
+    public void deleteAll(List<Fighter> list) {
+        for (int i = 0; i < list.size(); i++) {
+            Fighter f = list.get(i);
+            try {
+                transaction = session.beginTransaction();
+                session.remove(f);
+                transaction.commit();
+            } catch (Exception e) {
+                if (transaction != null) {
+                    transaction.rollback();
+                }
+            }
+        }
+        
     }
 }

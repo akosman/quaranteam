@@ -20,7 +20,7 @@ public interface FighterDAO extends AutoCloseable{
     public void deleteFighter(Fighter f);
     public void updateFighter(Fighter f);    
     public List<Fighter> getFighters();
-    
+    public void deleteAll(List<Fighter> list);
     @Override
     default public void close(){
     }

@@ -8,8 +8,11 @@ package hu.unideb.inf.view;
 import hu.unideb.inf.MainApp;
 import hu.unideb.inf.model.Fighter;
 import hu.unideb.inf.model.Model;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,6 +27,9 @@ import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
 import javafx.stage.Stage;
 
 /**
@@ -41,6 +47,7 @@ public class FXMLFightingSceneController implements Initializable {
     }
 
     private Fighter youselect;
+
     private Fighter opponentselect;
 
     @FXML
@@ -81,10 +88,19 @@ public class FXMLFightingSceneController implements Initializable {
 
     @FXML
     private Button closeButton;
+    @FXML
+    private ImageView bgIV1;
 
+    @FXML
+    private ImageView bgIV2;
+
+    @FXML
+    private ImageView bgIV3;
     // Informacioatadas az initData fuggvennyel, a ket harcos infoit kapjuk meg
     public void initData(Fighter You, Fighter Opponent) {
 
+        bgIV1.setVisible(false); bgIV2.setVisible(false); bgIV3.setVisible(true);
+        
         youselect = You;
         opponentselect = Opponent;
 
@@ -110,7 +126,18 @@ public class FXMLFightingSceneController implements Initializable {
         int level=0;
         Fighter you = Fighter1;
         Fighter opponent = Fighter2;
-
+        //Random
+        Random rand = new Random();
+        int rand_inty = rand.nextInt(you.getLevel()+1);
+        int rand_into = rand.nextInt(opponent.getLevel()+1);
+        if(you.getLevel()>=3)
+        {
+        you.setAttack(you.getAttack()+rand_inty);
+        }
+        if(opponent.getLevel()>=3)
+        {
+        opponent.setDefend(opponent.getDefend()+rand_into);
+        }
         if (you.getAttack() > opponent.getDefend()) {
             
             level=you.getLevel();
@@ -147,12 +174,21 @@ public class FXMLFightingSceneController implements Initializable {
 
             @Override
             public void handle(WorkerStateEvent t) {
-                if(winner=="DRAW"){
+                if(winner=="DRAW")
+                {
                     updateMessage.setText(winner);
                 }
-                else{
+                else
+                {
+                    System.out.println(winner);
                     updateMessage.setText("Winner: " + winner);
+                    if(winner.equals(opponentselect.getName())){
+                        System.out.println("FASZ!");
+                         bgIV1.setVisible(true); bgIV2.setVisible(false); bgIV3.setVisible(false);
+                    }else if(winner.equals(youselect.getName()))
+                    { bgIV1.setVisible(false); bgIV2.setVisible(true); bgIV3.setVisible(false);}
                 }
+                
             }
             
         });

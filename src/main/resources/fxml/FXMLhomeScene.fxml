@@ -6,6 +6,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -33,22 +35,21 @@
             <Button mnemonicParsing="false" onAction="#handleLoadFromFileButtonPushed" prefHeight="42.0" prefWidth="195.0" styleClass="menugombok" stylesheets="@style.css" text="Load" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <AnchorPane fx:id="playPane" disable="true" style="-fx-background-color: #595959;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="playPane" disable="true" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="64.0" layoutY="39.0" prefHeight="76.0" prefWidth="162.0" text="Your fighter:" textFill="#0067ff">
-
-            </Label>
-            <Label layoutX="393.0" layoutY="46.0" prefHeight="62.0" prefWidth="141.0" text="Opponent:" textFill="RED">
-
-            </Label>
-            <Button layoutX="274.0" layoutY="161.0" mnemonicParsing="false" onAction="#handleFightButtonPushed" text="FIGHT" textFill="#dd0101" />
-            <ChoiceBox fx:id="yourFighterA" layoutX="75.0" layoutY="161.0" prefWidth="150.0" />
-            <ChoiceBox fx:id="yourFighterB" layoutX="388.0" layoutY="161.0" prefWidth="150.0" />
+            <Button id="fightbutton" layoutX="325.0" layoutY="148.0" mnemonicParsing="false" onAction="#handleFightButtonPushed" prefHeight="64.0" prefWidth="69.0" stylesheets="@style.css" textFill="#dd0101" />
+            <ChoiceBox fx:id="yourFighterA" layoutX="40.0" layoutY="167.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="yourFighterB" layoutX="517.0" layoutY="167.0" prefWidth="150.0" />
             <Label fx:id="choiceerror" layoutX="161.0" layoutY="229.0" text="You cant fight against yourself!" visible="false">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
+            <ImageView fitHeight="183.0" fitWidth="655.0" layoutX="26.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/vs.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="managePane" disable="true" layoutX="10.0" layoutY="10.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

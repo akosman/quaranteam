@@ -157,6 +157,7 @@ public class FXMLhomeSceneController implements Initializable {
     // Itt a LOAD gomb megnezi hogy kit szeretnel betolteni es azt rakja a Labelekre
     @FXML
     void handleLoadButtonPushed() {
+
         for (int i = 0; i < model.getList().size(); i++) {
             if (ChooseFighter.getValue().equals(model.getList().get(i).getName())) {
                 nameLabel.textProperty().bind(model.getList().get(i).nameProperty());
@@ -164,38 +165,30 @@ public class FXMLhomeSceneController implements Initializable {
                 defendLabel.setText("" + model.getList().get(i).getDefend());
                 levelLabel.setText("" + model.getList().get(i).getLevel());
             }
+
         }
+
     }
 
     @FXML
     void handleSaveToFileButtonPushed() throws IOException {
 
         List<Fighter> fighterList = model.getList();
-        List<Fighter> DAOlist;
         try (FighterDAO fDAO = new FighterDAOclass()) {
-            DAOlist = fDAO.getFighters();
+            List<Fighter> fDAOList = fDAO.getFighters();
+            fDAO.deleteAll(fDAOList);
+            for (int i = 0; i < fighterList.size(); i++){
+                Fighter f = fighterList.get(i);
+                fDAO.saveFighter(f);
+            }
         }
 
-        for (int i = 0; i < fighterList.size(); i++) {
+        /*for (int i = 0; i < fighterList.size(); i++) {
             try (FighterDAO fDAO = new FighterDAOclass()) {
                 Fighter f = fighterList.get(i);
-                if (DAOlist.contains(f)) {
-                    fDAO.updateFighter(f);
-                } 
-                else {
-                    fDAO.saveFighter(f);
-                }
+                fDAO.saveFighter(f);
             }
-        }
-        
-        for (int i = 0; i < DAOlist.size(); i++) {
-            Fighter DAOf = DAOlist.get(i);
-            if(!fighterList.contains(DAOf)){
-                try (FighterDAO fDAO = new FighterDAOclass()) {
-                    fDAO.deleteFighter(DAOf);
-                }
-            }
-        }
+        }*/
     }
 
     @FXML
@@ -252,11 +245,8 @@ public class FXMLhomeSceneController implements Initializable {
                         choiceerror.setVisible(false);
                     }
                 }
-
             }
-
         }
-
     }
 
     // uj jatekos hozzaadasa eseten frissitem a choiceboxokat
