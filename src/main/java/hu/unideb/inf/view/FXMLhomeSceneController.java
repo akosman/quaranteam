@@ -103,7 +103,7 @@ public class FXMLhomeSceneController implements Initializable {
 
     // listak a ChoiceBoxokhoz
     ObservableList list = FXCollections.observableArrayList();
-    ObservableList list2 = FXCollections.observableArrayList();
+    
 
     //MENÜKEZELÉS ==== MENÜKEZELÉS ==== MENÜKEZELÉS ==== MENÜKEZELÉS ==== MENÜKEZELÉS
     @FXML
@@ -201,9 +201,9 @@ public class FXMLhomeSceneController implements Initializable {
 
         for (int i = 0; i < fighterList.size(); i++) {
             String fName = fighterList.get(i).getName();
-            if (!list.contains(fName) && !list2.contains(fName)) {
+            if (!list.contains(fName))  {
                 list.add(fName);
-                list2.add(fName);
+                
             }
         }
         Refresh();
@@ -257,11 +257,11 @@ public class FXMLhomeSceneController implements Initializable {
         ChooseFighter.getItems().clear();
 
         yourFighterA.getItems().addAll(list);
-        yourFighterA.setValue("DOM");
-        yourFighterB.getItems().addAll(list2);
-        yourFighterB.setValue("AKOS");
+        yourFighterA.setValue(list.get(0).toString());
+        yourFighterB.getItems().addAll(list);
+        yourFighterB.setValue(list.get(0).toString());
         ChooseFighter.getItems().addAll(list);
-        ChooseFighter.setValue("DOM");
+        ChooseFighter.setValue(list.get(0).toString());
 
     }
 
@@ -298,7 +298,7 @@ public class FXMLhomeSceneController implements Initializable {
                     temp.addAll(model.getList());
                     model.setList(temp);
                     list.add(v);
-                    list2.add(v);
+                    
                     Refresh();
                     break;
                 } else {
@@ -315,24 +315,24 @@ public class FXMLhomeSceneController implements Initializable {
     }
 
     // Betolto fuggveny a ChoiceBoxokhoz
-    private void LoadData() {
+   void LoadData() {
         list.removeAll(list);
-        list2.removeAll(list2);
+        
 
-        String a = "DOM";
-        String b = "AKOS";
-        String c = "DANI";
+        String a = "Mucsi";
+        String b = "Bödőcs";
+        String c = "Brendon";
         list.addAll(a, b, c);
-        list2.addAll(b, c, a);
+        
         yourFighterA.getItems().clear();
         yourFighterB.getItems().clear();
         ChooseFighter.getItems().clear();
         yourFighterA.getItems().addAll(list);
-        yourFighterB.getItems().addAll(list2);
+        yourFighterB.getItems().addAll(list);
         ChooseFighter.getItems().addAll(list);
-        ChooseFighter.setValue("DOM");
-        yourFighterA.setValue("DOM");
-        yourFighterB.setValue("AKOS");
+        ChooseFighter.setValue(a);
+        yourFighterA.setValue(a);
+        yourFighterB.setValue(b);
     }
 
     /**

@@ -34,9 +34,9 @@ public class Model {
     }
 
     public Model() {
-       fighter = new Fighter("DOM", 15, 25, 1);
-       fighter2 = new Fighter("AKOS",30,10, 1);
-       fighter3 = new Fighter("DANI",30,100, 1);
+       fighter = new Fighter("Mucsi", 25, 25, 1);
+       fighter2 = new Fighter("Bödőcs",40,10, 1);
+       fighter3 = new Fighter("Brendon",30,20, 1);
        list = new ArrayList<>();
        list.add(fighter);
        list.add(fighter2);

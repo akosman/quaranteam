@@ -183,8 +183,7 @@ public class FXMLFightingSceneController implements Initializable {
                     System.out.println(winner);
                     updateMessage.setText("Winner: " + winner);
                     if(winner.equals(opponentselect.getName())){
-                        System.out.println("FASZ!");
-                         bgIV1.setVisible(true); bgIV2.setVisible(false); bgIV3.setVisible(false);
+                        bgIV1.setVisible(true); bgIV2.setVisible(false); bgIV3.setVisible(false);
                     }else if(winner.equals(youselect.getName()))
                     { bgIV1.setVisible(false); bgIV2.setVisible(true); bgIV3.setVisible(false);}
                 }
