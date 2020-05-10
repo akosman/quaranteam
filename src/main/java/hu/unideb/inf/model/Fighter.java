@@ -52,10 +52,6 @@ public class Fighter implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
-    
-    public int getLevel() {
-        return level;
-    }
 
     @Column(name = "attack")
     public int getAttack() {
