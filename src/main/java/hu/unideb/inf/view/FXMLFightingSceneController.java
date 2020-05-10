@@ -88,6 +88,7 @@ public class FXMLFightingSceneController implements Initializable {
 
     @FXML
     private Button closeButton;
+    
     @FXML
     private ImageView bgIV1;
 
@@ -96,11 +97,14 @@ public class FXMLFightingSceneController implements Initializable {
 
     @FXML
     private ImageView bgIV3;
+
     // Informacioatadas az initData fuggvennyel, a ket harcos infoit kapjuk meg
     public void initData(Fighter You, Fighter Opponent) {
 
-        bgIV1.setVisible(false); bgIV2.setVisible(false); bgIV3.setVisible(true);
-        
+        bgIV1.setVisible(false);
+        bgIV2.setVisible(false);
+        bgIV3.setVisible(true);
+
         youselect = You;
         opponentselect = Opponent;
 
@@ -117,40 +121,37 @@ public class FXMLFightingSceneController implements Initializable {
         opponentdefend.setText("" + Opponent.getDefend());
 
         //winner = Fight(You, Opponent);
-
         updateMessage.setText("");
 
     }
 
     public String Fight(Fighter Fighter1, Fighter Fighter2) {
-        int level=0;
+        int level = 0;
         Fighter you = Fighter1;
         Fighter opponent = Fighter2;
         //Random
         Random rand = new Random();
-        int rand_inty = rand.nextInt(you.getLevel()+1);
-        int rand_into = rand.nextInt(opponent.getLevel()+1);
-        if(you.getLevel()>=3)
-        {
-        you.setAttack(you.getAttack()+rand_inty);
+        int rand_inty = rand.nextInt(you.getLevel() + 1);
+        int rand_into = rand.nextInt(opponent.getLevel() + 1);
+        if (you.getLevel() >= 3) {
+            you.setAttack(you.getAttack() + rand_inty);
         }
-        if(opponent.getLevel()>=3)
-        {
-        opponent.setDefend(opponent.getDefend()+rand_into);
+        if (opponent.getLevel() >= 3) {
+            opponent.setDefend(opponent.getDefend() + rand_into);
         }
         if (you.getAttack() > opponent.getDefend()) {
-            
-            level=you.getLevel();
+
+            level = you.getLevel();
             level++;
             you.setLevel(level);
-            
+
             return you.getName();
         } else if (you.getDefend() < opponent.getAttack()) {
-            
-            level=opponent.getLevel();
+
+            level = opponent.getLevel();
             level++;
             opponent.setLevel(level);
-            
+
             return opponent.getName();
         } else {
             return "DRAW";
@@ -162,6 +163,7 @@ public class FXMLFightingSceneController implements Initializable {
     void handleStartButtonPushed() {
         updateMessage.setText("Fighting...");
         //startButton.setDisable(true);
+        startButton.setVisible(false);
         winner = Fight(youselect, opponentselect);
         progressbar.setProgress(0);
         Task startProgressBar = ProgressBarTask();
@@ -174,22 +176,24 @@ public class FXMLFightingSceneController implements Initializable {
 
             @Override
             public void handle(WorkerStateEvent t) {
-                if(winner=="DRAW")
-                {
+                if (winner == "DRAW") {
                     updateMessage.setText(winner);
-                }
-                else
-                {
+                } else {
                     System.out.println(winner);
                     updateMessage.setText("Winner: " + winner);
-                    if(winner.equals(opponentselect.getName())){
-                        bgIV1.setVisible(true); bgIV2.setVisible(false); bgIV3.setVisible(false);
-                    }else if(winner.equals(youselect.getName()))
-                    { bgIV1.setVisible(false); bgIV2.setVisible(true); bgIV3.setVisible(false);}
+                    if (winner.equals(opponentselect.getName())) {
+                        bgIV1.setVisible(true);
+                        bgIV2.setVisible(false);
+                        bgIV3.setVisible(false);
+                    } else if (winner.equals(youselect.getName())) {
+                        bgIV1.setVisible(false);
+                        bgIV2.setVisible(true);
+                        bgIV3.setVisible(false);
+                    }
                 }
-                
+
             }
-            
+
         });
         new Thread(startProgressBar).start();
 

@@ -13,16 +13,12 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-         //FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/fxml/FXMLFightersScene.fxml"));
          FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/fxml/FXMLhomeScene.fxml"));
         Scene scene = new Scene(loader.load());
-       // stage.initStyle(StageStyle.TRANSPARENT);
-       // scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
         stage.setTitle("Fighting Game");
         stage.getIcons().add(new Image("/fxml/sword.png"));
         stage.setScene(scene);
         
-        //((FXMLFightersSceneController)loader.getController()).setModel(new Model());
         ((FXMLhomeSceneController)loader.getController()).setModel(new Model());
         stage.setResizable(false);
         stage.show();

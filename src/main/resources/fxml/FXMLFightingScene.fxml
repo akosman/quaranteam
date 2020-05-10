@@ -24,80 +24,80 @@
                <image>
                   <Image url="@img/arena.jpg" />
                </image></ImageView>
-            <ImageView layoutX="52.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView layoutX="50.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@klingon-head.png" />
                </image>
             </ImageView>
-            <ImageView layoutX="430.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView layoutX="452.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@ninja-head.png" />
                </image>
             </ImageView>
-            <Label fx:id="yourfightername" layoutX="75.0" layoutY="14.0" styleClass="fighttext" text="Label" textFill="#2d23f2">
+            <Label fx:id="yourfightername" alignment="CENTER" contentDisplay="CENTER" layoutX="49.0" layoutY="14.0" prefHeight="30.0" prefWidth="90.0" styleClass="fighttext" text="Label" textAlignment="CENTER" textFill="#2d23f2">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="opponentname" layoutX="453.0" layoutY="14.0" styleClass="fighttext" text="Label" textFill="#f80303">
+            <Label fx:id="opponentname" alignment="CENTER" contentDisplay="CENTER" layoutX="455.0" layoutY="16.0" prefHeight="26.0" prefWidth="90.0" styleClass="fighttext" text="Label" textAlignment="CENTER" textFill="#f80303">
                <font>
                   <Font name="Ebrima Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="youlvl" contentDisplay="CENTER" layoutX="82.0" layoutY="161.0" styleClass="fighttext" text="Label" />
-            <Label layoutX="36.0" layoutY="200.0" styleClass="fighttext" text="Attack:">
+            <Label fx:id="youlvl" contentDisplay="CENTER" layoutX="81.0" layoutY="43.0" styleClass="fighttext" text="Label" />
+            <Label layoutX="34.0" layoutY="235.0" styleClass="fighttext" text="Attack:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="opponentlvl" contentDisplay="CENTER" layoutX="463.0" layoutY="171.0" styleClass="fighttext" text="Label" />
-            <Label layoutX="28.0" layoutY="230.0" styleClass="fighttext" text="Defend:">
+            <Label fx:id="opponentlvl" contentDisplay="CENTER" layoutX="487.0" layoutY="43.0" styleClass="fighttext" text="Label" />
+            <Label layoutX="26.0" layoutY="265.0" styleClass="fighttext" text="Defend:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="opponentattack" layoutX="496.0" layoutY="200.0" styleClass="fighttext" text="Label">
+            <Label fx:id="opponentattack" layoutX="518.0" layoutY="236.0" styleClass="fighttext" text="Label">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="opponentdefend" layoutX="496.0" layoutY="230.0" styleClass="fighttext" text="Label">
+            <Label fx:id="opponentdefend" layoutX="518.0" layoutY="266.0" styleClass="fighttext" text="Label">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="286.0" layoutY="116.0" styleClass="fighttext" text="vs">
+            <Label layoutX="288.0" layoutY="21.0" styleClass="fighttext" text="vs">
                <font>
                   <Font size="26.0" />
                </font>
             </Label>
-            <Label fx:id="youattack" layoutX="108.0" layoutY="200.0" styleClass="fighttext" text="Label">
+            <Label fx:id="youattack" layoutX="106.0" layoutY="235.0" styleClass="fighttext" text="Label">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="youdefend" layoutX="108.0" layoutY="231.0" styleClass="fighttext" text="Label">
+            <Label fx:id="youdefend" layoutX="106.0" layoutY="266.0" styleClass="fighttext" text="Label">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="414.0" layoutY="200.0" styleClass="fighttext" text="Attack:">
+            <Label layoutX="436.0" layoutY="236.0" styleClass="fighttext" text="Attack:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="410.0" layoutY="230.0" styleClass="fighttext" text="Defend:">
+            <Label layoutX="432.0" layoutY="266.0" styleClass="fighttext" text="Defend:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="updateMessage" alignment="CENTER" layoutX="219.0" layoutY="340.0" prefHeight="35.0" prefWidth="155.0" styleClass="fighttext" text="Label">
+            <Label fx:id="updateMessage" alignment="CENTER" layoutX="140.0" layoutY="61.0" prefHeight="46.0" prefWidth="318.0" styleClass="fighttext" text="Label">
                <font>
-                  <Font size="24.0" />
+                  <Font size="30.0" />
                </font></Label>
-            <ProgressBar fx:id="progressbar" layoutX="150.0" layoutY="288.0" prefHeight="18.0" prefWidth="299.0" progress="0.0" />
-            <Button fx:id="startButton" layoutX="272.0" layoutY="233.0" mnemonicParsing="false" onAction="#handleStartButtonPushed" text="START" />
-            <Button fx:id="closeButton" layoutX="512.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleCloseButtonPushed" prefHeight="26.0" prefWidth="61.0" text="close" />
+            <ProgressBar fx:id="progressbar" layoutX="150.0" layoutY="349.0" prefHeight="18.0" prefWidth="299.0" progress="0.0" />
+            <Button fx:id="startButton" layoutX="269.0" layoutY="292.0" mnemonicParsing="false" onAction="#handleStartButtonPushed" prefHeight="32.0" prefWidth="61.0" styleClass="fightingbuttons" stylesheets="@style.css" text="START" />
+            <Button fx:id="closeButton" layoutX="512.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleCloseButtonPushed" prefHeight="26.0" prefWidth="61.0" styleClass="fightingbuttons" stylesheets="@style.css" text="CLOSE" />
          </children>
       </AnchorPane>
    </children>

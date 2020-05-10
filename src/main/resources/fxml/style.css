@@ -2,14 +2,18 @@
 
     -fx-background-radius: 0;
     -fx-background-color: rgba(0, 0, 0, 0.5);
-    -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
-    -fx-font-size: 12;
+    -fx-font-family: Helvetica;
+    -fx-font-size: 14;
     -fx-text-fill: white;
+
 }
 
 .menugombok:hover {
-    -fx-background-color: rgba(0, 0, 0, 0.9);
+    -fx-background-color: rgba(0, 0, 0, 0.84);
+    -fx-border-width: 0 10 0 10;
+    -fx-border-color:black rgba(0, 0, 0, 0.84) black crimson;
     -fx-text-fill: crimson;
+    -fx-font-style: italic;
 }
 
 .menugombok:pressed {
@@ -17,9 +21,32 @@
     -fx-text-fill: white;
 }
 
+.exorange{
+-fx-font-size: 17;
+    -fx-text-fill: #494949;
+    -fx-background-color: #ffffff;
+    -fx-padding: 1px;
+    -fx-border-color:#494949;
+    -fx-border-width:2;
+}
+.exorange:hover {
+-fx-text-fill: #ffffff;
+-fx-border-color: rgba(153, 0, 0, 0.0);
+-fx-background-color: rgba(0, 0, 0, 0.84);
+}
 
-.maingridpane{
 
+.fightingbuttons{
+-fx-font-size: 17;
+    -fx-text-fill: black;
+    -fx-background-color:  rgba( 239, 221, 111, 0.7);
+    -fx-padding: 1px;
+    -fx-border-color:rgba(0, 0, 0, 0);
+    -fx-border-width:2;
+}
+.fightingbuttons:hover {
+-fx-text-fill: #ffffff;
+-fx-background-color: rgba(0, 0, 0, 0.7);
 }
 
 #mainAnchorPane{
@@ -34,6 +61,11 @@
 #fSceneAP{
 
 }
+.managetext {
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( gaussian , black , 10,0.5,0,1 );
+}
 .fighttext{
     -fx-text-fill: white;
+    -fx-effect: dropshadow( gaussian , black , 10,0.5,0,1 );
 }

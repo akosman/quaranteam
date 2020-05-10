@@ -60,7 +60,7 @@ public class FXMLhomeSceneController implements Initializable {
     private AnchorPane playPane;
 
     @FXML
-    private AnchorPane addFighterPane;
+    private AnchorPane hometextPane;
 
     @FXML
     private Label colorLabel;
@@ -103,7 +103,6 @@ public class FXMLhomeSceneController implements Initializable {
 
     // listak a ChoiceBoxokhoz
     ObservableList list = FXCollections.observableArrayList();
-    
 
     //MENÜKEZELÉS ==== MENÜKEZELÉS ==== MENÜKEZELÉS ==== MENÜKEZELÉS ==== MENÜKEZELÉS
     @FXML
@@ -114,8 +113,8 @@ public class FXMLhomeSceneController implements Initializable {
         //Többi eltűntetése
         managePane.setVisible(false);
         managePane.setDisable(true);
-        addFighterPane.setVisible(false);
-        addFighterPane.setDisable(true);
+        hometextPane.setVisible(false);
+        hometextPane.setDisable(true);
     }
 
     @FXML
@@ -126,21 +125,9 @@ public class FXMLhomeSceneController implements Initializable {
         //Többi eltűntetése
         playPane.setVisible(false);
         playPane.setDisable(true);
-        addFighterPane.setVisible(false);
-        addFighterPane.setDisable(true);
+        hometextPane.setVisible(false);
+        hometextPane.setDisable(true);
 
-    }
-
-    @FXML
-    void handleAddFighterButtonPushed() {
-        //adott pane engedélyezése
-        addFighterPane.setVisible(true);
-        addFighterPane.setDisable(false);
-
-        managePane.setVisible(false);
-        managePane.setDisable(true);
-        playPane.setVisible(false);
-        playPane.setDisable(true);
     }
 
     @FXML
@@ -149,8 +136,8 @@ public class FXMLhomeSceneController implements Initializable {
         playPane.setDisable(true);
         managePane.setVisible(false);
         managePane.setDisable(true);
-        addFighterPane.setVisible(false);
-        addFighterPane.setDisable(true);
+        hometextPane.setVisible(true);
+        hometextPane.setDisable(false);
     }
     //MENÜKEZELÉS ==== MENÜKEZELÉS ==== MENÜKEZELÉS ==== MENÜKEZELÉS ==== MENÜKEZELÉS
 
@@ -177,18 +164,11 @@ public class FXMLhomeSceneController implements Initializable {
         try (FighterDAO fDAO = new FighterDAOclass()) {
             List<Fighter> fDAOList = fDAO.getFighters();
             fDAO.deleteAll(fDAOList);
-            for (int i = 0; i < fighterList.size(); i++){
+            for (int i = 0; i < fighterList.size(); i++) {
                 Fighter f = fighterList.get(i);
                 fDAO.saveFighter(f);
             }
         }
-
-        /*for (int i = 0; i < fighterList.size(); i++) {
-            try (FighterDAO fDAO = new FighterDAOclass()) {
-                Fighter f = fighterList.get(i);
-                fDAO.saveFighter(f);
-            }
-        }*/
     }
 
     @FXML
@@ -201,9 +181,8 @@ public class FXMLhomeSceneController implements Initializable {
 
         for (int i = 0; i < fighterList.size(); i++) {
             String fName = fighterList.get(i).getName();
-            if (!list.contains(fName))  {
+            if (!list.contains(fName)) {
                 list.add(fName);
-                
             }
         }
         Refresh();
@@ -259,7 +238,7 @@ public class FXMLhomeSceneController implements Initializable {
         yourFighterA.getItems().addAll(list);
         yourFighterA.setValue(list.get(0).toString());
         yourFighterB.getItems().addAll(list);
-        yourFighterB.setValue(list.get(0).toString());
+        yourFighterB.setValue(list.get(1).toString());
         ChooseFighter.getItems().addAll(list);
         ChooseFighter.setValue(list.get(0).toString());
 
@@ -298,7 +277,6 @@ public class FXMLhomeSceneController implements Initializable {
                     temp.addAll(model.getList());
                     model.setList(temp);
                     list.add(v);
-                    
                     Refresh();
                     break;
                 } else {
@@ -315,15 +293,14 @@ public class FXMLhomeSceneController implements Initializable {
     }
 
     // Betolto fuggveny a ChoiceBoxokhoz
-   void LoadData() {
+    void LoadData() {
         list.removeAll(list);
-        
 
         String a = "Mucsi";
         String b = "Bödőcs";
         String c = "Brendon";
         list.addAll(a, b, c);
-        
+
         yourFighterA.getItems().clear();
         yourFighterB.getItems().clear();
         ChooseFighter.getItems().clear();
