@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -19,13 +21,16 @@ public class Fighter implements Serializable {
     private StringProperty name = new SimpleStringProperty();
     private int attack;
     private int defend;
+    private int level;
+    private IntegerProperty level2 = new SimpleIntegerProperty();
     
 
-    public Fighter(String name,int attack,int defend) {
+    public Fighter(String name,int attack,int defend, int level) {
         this.name.setValue(name);
         this.attack=attack;
         this.defend=defend;
-    
+        this.level=level;
+        this.level2.setValue(level);
     }
 
     public int getAttack() {
@@ -34,6 +39,10 @@ public class Fighter implements Serializable {
 
     public int getDefend() {
         return defend;
+    }
+    
+    public int getLevel() {
+        return level;
     }
 
     public void setAttack(int attack) {
@@ -44,8 +53,17 @@ public class Fighter implements Serializable {
         this.defend = defend;
     }
     
+       public IntegerProperty levelProperty() {
+        return level2;
+    }
 
-
+        public Integer getLevel2() {
+        return level2.getValue();
+    }
+    
+    public void setLevel2(Integer level) {
+        this.level2.setValue(level);
+    }
 
     public StringProperty nameProperty() {
         return name;
@@ -66,11 +84,13 @@ public class Fighter implements Serializable {
         s.writeUTF(name.getValue());
         s.writeInt(attack);
         s.writeInt(defend);
+        s.writeInt(level2.getValue());
     }
-
+       
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         this.name = new SimpleStringProperty(s.readUTF());
         this.attack = s.readInt();
         this.defend = s.readInt();
+        this.level2 = new SimpleIntegerProperty(s.readInt());
     }
 }
