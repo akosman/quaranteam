@@ -40,7 +40,7 @@ import javafx.stage.Stage;
 public class FXMLFightingSceneController implements Initializable {
 
     private Model model;
-    String winner;
+    private String winner;
 
     public void setModelFighting(Model model) {
         this.model = model;
@@ -88,6 +88,7 @@ public class FXMLFightingSceneController implements Initializable {
 
     @FXML
     private Button closeButton;
+    
     @FXML
     private ImageView bgIV1;
 
@@ -96,19 +97,22 @@ public class FXMLFightingSceneController implements Initializable {
 
     @FXML
     private ImageView bgIV3;
+
     // Informacioatadas az initData fuggvennyel, a ket harcos infoit kapjuk meg
     public void initData(Fighter You, Fighter Opponent) {
 
-        bgIV1.setVisible(false); bgIV2.setVisible(false); bgIV3.setVisible(true);
-        
+        bgIV1.setVisible(false);
+        bgIV2.setVisible(false);
+        bgIV3.setVisible(true);
+
         youselect = You;
         opponentselect = Opponent;
 
         yourfightername.textProperty().bind(You.nameProperty());
         opponentname.textProperty().bind(Opponent.nameProperty());
 
-        youlvl.setText("Lvl:" + You.getLevel2());
-        opponentlvl.setText("Lvl:" + Opponent.getLevel2());
+        youlvl.setText("Lvl:" + You.getLevel());
+        opponentlvl.setText("Lvl:" + Opponent.getLevel());
 
         youattack.setText("" + You.getAttack());
         opponentattack.setText("" + Opponent.getAttack());
@@ -116,38 +120,38 @@ public class FXMLFightingSceneController implements Initializable {
         youdefend.setText("" + You.getDefend());
         opponentdefend.setText("" + Opponent.getDefend());
 
-        winner = Fight(You, Opponent);
-
+        //winner = Fight(You, Opponent);
         updateMessage.setText("");
 
     }
 
     public String Fight(Fighter Fighter1, Fighter Fighter2) {
-
-        
-        int level=0;
+        int level = 0;
         Fighter you = Fighter1;
         Fighter opponent = Fighter2;
         //Random
         Random rand = new Random();
-        int rand_inty = rand.nextInt(you.getLevel2());
-        int rand_into = rand.nextInt(opponent.getLevel2());
-        you.setAttack(you.getAttack()+rand_inty);
-        opponent.setDefend(opponent.getDefend()+rand_into);
-
+        int rand_inty = rand.nextInt(you.getLevel() + 1);
+        int rand_into = rand.nextInt(opponent.getLevel() + 1);
+        if (you.getLevel() >= 3) {
+            you.setAttack(you.getAttack() + rand_inty);
+        }
+        if (opponent.getLevel() >= 3) {
+            opponent.setDefend(opponent.getDefend() + rand_into);
+        }
         if (you.getAttack() > opponent.getDefend()) {
-            
-            level=you.getLevel2();
+
+            level = you.getLevel();
             level++;
-            you.setLevel2(level);
-            
+            you.setLevel(level);
+
             return you.getName();
         } else if (you.getDefend() < opponent.getAttack()) {
-            
-            level=opponent.getLevel2();
+
+            level = opponent.getLevel();
             level++;
-            opponent.setLevel2(level);
-            
+            opponent.setLevel(level);
+
             return opponent.getName();
         } else {
             return "DRAW";
@@ -159,7 +163,8 @@ public class FXMLFightingSceneController implements Initializable {
     void handleStartButtonPushed() {
         updateMessage.setText("Fighting...");
         //startButton.setDisable(true);
-        
+        startButton.setVisible(false);
+        winner = Fight(youselect, opponentselect);
         progressbar.setProgress(0);
         Task startProgressBar = ProgressBarTask();
 
@@ -171,23 +176,24 @@ public class FXMLFightingSceneController implements Initializable {
 
             @Override
             public void handle(WorkerStateEvent t) {
-                if(winner=="DRAW")
-                {
+                if (winner == "DRAW") {
                     updateMessage.setText(winner);
-                }
-                else
-                {
+                } else {
                     System.out.println(winner);
                     updateMessage.setText("Winner: " + winner);
-                    if(winner.equals(opponentselect.getName())){
-                        System.out.println("FASZ!");
-                         bgIV1.setVisible(true); bgIV2.setVisible(false); bgIV3.setVisible(false);
-                    }else if(winner.equals(youselect.getName()))
-                    { bgIV1.setVisible(false); bgIV2.setVisible(true); bgIV3.setVisible(false);}
+                    if (winner.equals(opponentselect.getName())) {
+                        bgIV1.setVisible(true);
+                        bgIV2.setVisible(false);
+                        bgIV3.setVisible(false);
+                    } else if (winner.equals(youselect.getName())) {
+                        bgIV1.setVisible(false);
+                        bgIV2.setVisible(true);
+                        bgIV3.setVisible(false);
+                    }
                 }
-                
+
             }
-            
+
         });
         new Thread(startProgressBar).start();
 

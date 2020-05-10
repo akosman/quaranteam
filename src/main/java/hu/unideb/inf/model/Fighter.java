@@ -1,96 +1,124 @@
 //Proba komment GM
 //Proba komment Dani
-
 package hu.unideb.inf.model;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.Objects;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author Dani
  */
+@Entity
+@Table(name = "fighters")
+@Access(AccessType.PROPERTY)
 public class Fighter implements Serializable {
 
-    private StringProperty name = new SimpleStringProperty();
+    private int id; 
     private int attack;
     private int defend;
-    private int level;
-    private IntegerProperty level2 = new SimpleIntegerProperty();
-    
+    private IntegerProperty level = new SimpleIntegerProperty();
+    private StringProperty name = new SimpleStringProperty();
 
-    public Fighter(String name,int attack,int defend, int level) {
+    public Fighter() {
+
+    }
+
+    public Fighter(String name, int attack, int defend, int level) {
         this.name.setValue(name);
-        this.attack=attack;
-        this.defend=defend;
-        this.level=level;
-        this.level2.setValue(level);
+        this.attack = attack;
+        this.defend = defend;
+        this.level.setValue(level);
     }
 
-    public int getAttack() {
-        return attack;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    public int getId() {
+        return id;
     }
-
-    public int getDefend() {
-        return defend;
+    public void setId(int id) {
+        this.id = id;
     }
     
     public int getLevel() {
         return level;
     }
 
+    @Column(name = "attack")
+    public int getAttack() {
+        return attack;
+    }
     public void setAttack(int attack) {
         this.attack = attack;
     }
 
+    @Column(name = "defend")
+    public int getDefend() {
+        return defend;
+    }
     public void setDefend(int defend) {
         this.defend = defend;
     }
-    
-       public IntegerProperty levelProperty() {
-        return level2;
+
+    @Column(name = "level")
+    public Integer getLevel() {
+        return level.getValue();
+    }
+    public void setLevel(Integer level) {
+        this.level.setValue(level);
+    }
+    public IntegerProperty levelProperty() {
+        return level;
     }
 
-        public Integer getLevel2() {
-        return level2.getValue();
+    @Column(name = "name")
+    public String getName() {
+        return name.getValue();
     }
-    
-    public void setLevel2(Integer level) {
-        this.level2.setValue(level);
+    public void setName(String name) {
+        this.name.setValue(name);
     }
-
     public StringProperty nameProperty() {
         return name;
     }
 
-    public String getName() {
-        return name.getValue();
-    }
+    /*@Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }*/
 
-    public void setName(String name) {
-        this.name.setValue(name);
-    }
+    @Override
+    public boolean equals(Object obj) {
 
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Fighter other = (Fighter) obj;
 
+        if (!Objects.equals(this.name.toString(), other.name.toString())) {
+            return false;
+        }
 
-
-    private void writeObject(ObjectOutputStream s) throws IOException {
-        s.writeUTF(name.getValue());
-        s.writeInt(attack);
-        s.writeInt(defend);
-        s.writeInt(level2.getValue());
-    }
-       
-    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
-        this.name = new SimpleStringProperty(s.readUTF());
-        this.attack = s.readInt();
-        this.defend = s.readInt();
-        this.level2 = new SimpleIntegerProperty(s.readInt());
+        return true;
     }
 }
